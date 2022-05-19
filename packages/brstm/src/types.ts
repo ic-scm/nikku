@@ -18,7 +18,7 @@ export type TrackDescription = {
  * - 1 - 16-bit PCM
  * - 2 - 4-bit ADPCM
  */
-export type CodecType = 0 | 1 | 2;
+export type CodecType = 0 | 1 | 2 | 4;
 export type Metadata = {
   fileSize: number;
   endianness: Endianness;

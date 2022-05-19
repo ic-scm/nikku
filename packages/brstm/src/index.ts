@@ -530,7 +530,60 @@ export class Brstm {
        * @type {Array<number>}
        */
       const sampleResult: Array<number> = [];
-      if (codec === 2) {
+      if (codec === 4) {
+        // Custom 2-bit ADPCM
+        
+        const ps = blockData[0];
+        const { yn1, yn2 } = adpcChunkData[c][b];
+        //const   signed int  yn1 = brstmi->ADPCM_hsamples_1[c][b], yn2 = brstmi->ADPCM_hsamples_2[c][b];
+        
+        let cps = ps,
+        cyn1 = yn1,
+        cyn2 = yn2,
+        dataIndex = 0;
+        
+        const coefs = [
+            0x7F, 0x7E, 0x7C, 0x77,
+            0x72, 0x6B, 0x63, 0x5B,
+            0x51, 0x46, 0x3A, 0x2E,
+            0x20, 0x13, 0x08,-0x08,
+        ];
+        
+        for (let sampleIndex = 0; sampleIndex < totalSamplesInBlock; ) {
+            let outSample = 0;
+            if (sampleIndex % 12 == 0) {
+                if(sampleIndex != 0) dataIndex++;
+                cps = blockData[dataIndex+3];
+            }
+            switch(sampleIndex++ % 4) {
+                case 0: outSample = blockData[dataIndex] >> 6; break;
+                case 1: outSample = blockData[dataIndex] >> 4 & 0b00000011; break;
+                case 2: outSample = blockData[dataIndex] >> 2 & 0b00000011; break;
+                case 3: outSample = blockData[dataIndex++] & 0b00000011; break;
+            }
+            if (outSample >= 2) {
+                outSample -= 4;
+            }
+            const scale = 1 << ((cps & 0b11110000) >> 4);
+            const cIndex = (cps & 0b00001111);
+            
+            outSample = ((cyn1 * coefs[cIndex] >> 6) - cyn2) + (outSample * scale);
+            
+            cyn2 = cyn1;
+            cyn1 = clamp(outSample, -32768, 32767);
+            
+            sampleResult.push(cyn1);
+            //c_writtensamples++;
+        }
+        
+        // Overwrite history samples for the next block with decoded samples
+        if (b < totalBlocks - 1) {
+          adpcChunkData[c][b + 1].yn1 = sampleResult[totalSamplesInBlock - 1];
+          adpcChunkData[c][b + 1].yn2 = sampleResult[totalSamplesInBlock - 2];
+        }
+        
+      }
+      else if (codec === 2) {
         // 4-bit ADPCM
         const ps = blockData[0];
         const { yn1, yn2 } = adpcChunkData[c][b];

@@ -1,9 +1,12 @@
-lockfileVersion: 5.3
+lockfileVersion: 5.4
 
 importers:
 
   .:
-    specifiers: {}
+    specifiers:
+      pnpm: ^7.1.2
+    dependencies:
+      pnpm: 7.1.2
 
   app:
     specifiers:
@@ -26,7 +29,7 @@ importers:
       typescript: 4.6.2
       vite: 2.8.6
       vite-plugin-comlink: 2.1.0_comlink@4.3.1+vite@2.8.6
-      vite-plugin-worker: 1.0.5_typescript@4.6.2+vite@2.8.6
+      vite-plugin-worker: 1.0.5_33scgkl3xmveydcdakkirw6exa
 
   packages/brstm:
     specifiers:
@@ -334,6 +337,8 @@ packages:
     resolution: {integrity: sha512-BoHhDJrJXqcg+ZL16Xv39H9n+AqJ4pcDrQBGZN+wHxIysrLZ3/ECwCBUch/1zUNhnsXULcONU3Ei5Hmkfk6kiQ==}
     engines: {node: '>=6.0.0'}
     hasBin: true
+    dependencies:
+      '@babel/types': 7.17.0
     dev: true
 
   /@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression/7.16.7_@babel+core@7.17.8:
@@ -1345,7 +1350,7 @@ packages:
       slash: 3.0.0
     dev: true
 
-  /@rollup/plugin-babel/5.3.1_@babel+core@7.17.8+rollup@2.70.1:
+  /@rollup/plugin-babel/5.3.1_b3dmjfji46fxi4pypym34a4m6q:
     resolution: {integrity: sha512-WFfdLWU/xVWKeRQnKmIAQULUI7Il0gZnBIH/ZFO069wYIfPu+8zrfp/KMW0atmELoRDq8FbiP3VCss9MhCut7Q==}
     engines: {node: '>= 10.0.0'}
     peerDependencies:
@@ -2975,7 +2980,7 @@ packages:
       '@babel/preset-flow': 7.16.7_@babel+core@7.17.8
       '@babel/preset-react': 7.16.7_@babel+core@7.17.8
       '@rollup/plugin-alias': 3.1.9_rollup@2.70.1
-      '@rollup/plugin-babel': 5.3.1_@babel+core@7.17.8+rollup@2.70.1
+      '@rollup/plugin-babel': 5.3.1_b3dmjfji46fxi4pypym34a4m6q
       '@rollup/plugin-commonjs': 17.1.0_rollup@2.70.1
       '@rollup/plugin-json': 4.1.0_rollup@2.70.1
       '@rollup/plugin-node-resolve': 11.2.1_rollup@2.70.1
@@ -2999,7 +3004,7 @@ packages:
       rollup-plugin-bundle-size: 1.0.3
       rollup-plugin-postcss: 4.0.2_postcss@8.4.12
       rollup-plugin-terser: 7.0.2_rollup@2.70.1
-      rollup-plugin-typescript2: 0.29.0_rollup@2.70.1+typescript@4.6.2
+      rollup-plugin-typescript2: 0.29.0_xbcrmlcbgq2dbmgm4spsftqsay
       sade: 1.8.1
       terser: 5.12.1
       tiny-glob: 0.2.9
@@ -3260,6 +3265,12 @@ packages:
     dependencies:
       find-up: 4.1.0
     dev: true
+
+  /pnpm/7.1.2:
+    resolution: {integrity: sha512-nZieltHsIEvr5vGcDM4JchBixUk1Esq+XewDP9RCiPAPxRv5LzDhGujgsrtoETyXBsQ9mclXSPppNr80ya4Rnw==}
+    engines: {node: '>=14.19'}
+    hasBin: true
+    dev: false
 
   /postcss-calc/8.2.4_postcss@8.4.12:
     resolution: {integrity: sha512-SmWMSJmB8MRnnULldx0lQIyhSNvuDl9HfrZkaqqE/WHAhToYsAvDq+yAsA/kIyINDszOp3Rh0GFoNuH5Ypsm3Q==}
@@ -3806,7 +3817,7 @@ packages:
       terser: 5.12.1
     dev: true
 
-  /rollup-plugin-typescript2/0.29.0_rollup@2.70.1+typescript@4.6.2:
+  /rollup-plugin-typescript2/0.29.0_xbcrmlcbgq2dbmgm4spsftqsay:
     resolution: {integrity: sha512-YytahBSZCIjn/elFugEGQR5qTsVhxhUwGZIsA9TmrSsC88qroGo65O5HZP/TTArH2dm0vUmYWhKchhwi2wL9bw==}
     peerDependencies:
       rollup: '>=1.26.3'
@@ -4219,7 +4230,7 @@ packages:
       vite: 2.8.6
     dev: true
 
-  /vite-plugin-worker/1.0.5_typescript@4.6.2+vite@2.8.6:
+  /vite-plugin-worker/1.0.5_33scgkl3xmveydcdakkirw6exa:
     resolution: {integrity: sha512-g7rW0YgQorRsiRV4YUxliqvEq2UIx0ZcBCZnosaJdffDbxMnYhJQQ+Jo6q7PLpwvZK5O3ldzia/wUlXJVm+iGw==}
     peerDependencies:
       vite: ^2.5.0
